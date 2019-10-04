@@ -26,7 +26,6 @@ func _integrate_forces(state):
 			impulse_strength = linked_to.linear_velocity.length()
 		if linked_to is KinematicBody2D:
 			impulse_strength = 100
-		#print(impulse_strength)
 		chain = linked_to.position - position
 		chain = chain.clamped(chain_length)
 		apply_impulse(Vector2.ZERO, chain.normalized()*impulse_strength*0.5)
