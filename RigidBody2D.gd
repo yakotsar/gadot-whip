@@ -9,7 +9,7 @@ onready var chain = linked_to.position - position
 
 func _integrate_forces(state):
 	var xform = state.get_transform()
-	if (linked_to.position - position).length() > chain_length:
+	if Input.is_mouse_button_pressed(BUTTON_LEFT) and (linked_to.position - position).length() > chain_length:
 		
 		chain = linked_to.position - position
 		chain = chain.clamped(chain_length)
@@ -27,6 +27,8 @@ func _integrate_forces(state):
 		if linked_to is KinematicBody2D:
 			impulse_strength = 100
 		#print(impulse_strength)
+		chain = linked_to.position - position
+		chain = chain.clamped(chain_length)
 		apply_impulse(Vector2.ZERO, chain.normalized()*impulse_strength*0.5)
 
 
