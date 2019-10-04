@@ -1,2 +1,1 @@
-# gadot-whip
 ![](gadowhip.gif)
